@@ -20,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         empRepo.save(empEntity);
 
        // employees.add(employee);
-        return "Saved Succesfully";
+        return "Saved Successfully";
     }
 
     @Override
@@ -39,7 +39,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean deleteemployee(Long id) {
+        EmpEntity emp = empRepo.findById(id).get();
+        empRepo.delete(emp);
        // employees.remove(id);
         return true;
     }
+
+    @Override
+    public String updateemployee(Long id, Employee employee) {
+        EmpEntity exesistingEmp = empRepo.findById(id).get();
+
+        exesistingEmp.setEmail(employee.getEmail());
+        exesistingEmp.setName(employee.getName());
+        exesistingEmp.setPhone(employee.getPhone());
+
+        empRepo.save(exesistingEmp);
+        //  empRepo.save(employee)
+        return "update successfully";
+    }
+
 }
