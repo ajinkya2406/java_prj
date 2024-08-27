@@ -9,10 +9,10 @@ import java.util.List;
 public class EmpConroller {
 
 
-   EmployeeService employeeService = new EmployeeServiceImpl();
+     // EmployeeService employeeService = new EmployeeServiceImpl();
     //Dependency injection
-//    @Autowired
-//    EmployeeService employeeService;
+   @Autowired
+   EmployeeService employeeService;
 
     @GetMapping("employees")
     public List<Employee> getAllEmployees(){
